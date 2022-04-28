@@ -1,0 +1,166 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - brain_teaser
+  - intent_brain_teaser_answer
+  - skip
+  - help
+  # - employee_on_boarding_to_project
+  # - execute_test_plan
+  - debug_help_servers
+  - debug_help_DUTs
+  - search_in_knowledge_base
+  - custom_action_test
+  - intent_debug_host_proceed
+
+entities:
+  - brain_teaser_answer
+  - debug_host_proceed
+  # - project_name
+  # - selected_project_list
+
+slots:
+  brain_teaser_answer:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: brain_teaser_answer
+  question_id:
+    type: text
+    mappings:
+    - type: custom
+  debug_host_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: debug_host_name
+  debug_host_username:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: debug_host_username
+  debug_host_password:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: debug_host_password
+  debug_host_proceed:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: debug_host_proceed
+      conditions:
+      - active_loop: debug_proceed_form
+        requested_slot: debug_host_proceed
+  # project_name:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #   - type: from_entity
+  #     entity: project_name
+  #     conditions:
+  #     - active_loop: showing_project_lists_form
+
+forms:
+  brain_teaser_form:
+    required_slots:
+      - brain_teaser_answer
+      - question_id
+  # showing_project_lists_form:
+  #   required_slots:
+  #     - project_name
+  debug_host_form:
+    required_slots:
+      - debug_host_name
+      - debug_host_username
+      - debug_host_password
+  debug_proceed_form:
+    required_slots:
+      - debug_host_proceed
+    # debug_host_username:
+    #   - type: from_text
+    # debug_host_password:
+    #   - type: from_text
+    # debug_host_name:
+    #   - type: from_text
+
+responses:
+  utter_greet:
+  - text: "Hey! How may I assist you?"
+  utter_did_that_help:
+  - text: "Did that help you?"
+  utter_happy:
+  - text: "Great, carry on!"
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  utter_how_to_help:
+  - text: "How can I assist you? Type 'help' for suggestions."
+  utter_select_brain_teaser_answer:
+  - text: "Please select the correct answer."
+  utter_presenting_brain_teaser:
+  - text: "Here is a brain teaser. Type 'skip' to ignore."
+  utter_all_usecases:
+  - text: "Alright, here are the funtions you can perform: \n"
+    buttons:
+    - title: "Join project for todo list/access request lists"
+      payload: /employee_on_boarding_to_project
+    - title: "Execute Test Plan"
+      payload: /execute_test_plan
+    - title: "Debug a host"
+      payload: /debug_help_servers
+    - title: "Debug a DUT"
+      payload: /debug_help_DUTs
+    - title: "Search in knowledge base"
+      payload: /search_in_knowledge_base
+
+  # utter_please_write_project_name:
+  # - text: "Please write the project name:"
+  utter_ask_debug_host_name:
+  - text: "Please write the host name:"
+  utter_ask_debug_host_username:
+  - text: "Please write the host username:"
+  utter_ask_debug_host_password:
+  - text: "Please write the host password:"
+  utter_debug_host_username_and_password:
+  - text: 'host: "{debug_host_name}", username: "{debug_host_username}" and password: "{debug_host_password}"'
+
+  utter_ask_debug_host_proceed:
+  - text: "Are you sure to proceed with these details?"
+    buttons:
+    - title: "Yes"
+      payload: '/intent_debug_host_proceed {"debug_host_proceed" : "Yes"}'
+    - title: "No"
+      payload: '/intent_debug_host_proceed {"debug_host_proceed" : "No"}'
+
+
+actions:
+  - action_show_brain_teaser
+  - action_validate_brain_teaser_answer
+  # - action_show_project_lists
+  - action_custom_test
+  - utter_debug_host_username_and_password
+  - action_debug_host_validate
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
