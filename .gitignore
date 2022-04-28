@@ -1,0 +1,6 @@
+.config
+.keras
+models
+tests
+web_app/node_modules/
+out.log
