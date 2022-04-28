@@ -1,0 +1,6 @@
+.config
+.keras
+.workbot_env
+models
+tests
+out.log
