@@ -1,5 +1,6 @@
 .config
 .keras
+actions/__pycache__/
 models
 tests
 web_app/node_modules/
