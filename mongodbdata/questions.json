@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "62439d2c8f5ca7ab51d57df9"
+  },
+  "question": "What is the capital of india",
+  "options": {
+    "Delhi": true,
+    "Pune": false,
+    "Mumbai": false,
+    "Bangalore": false
+  },
+  "q_id": "001"
+},{
+  "_id": {
+    "$oid": "62439d578f5ca7ab51d57dfa"
+  },
+  "question": "what are the heaviest objects in the universe?",
+  "options": {
+    "Stars": false,
+    "Planets": false,
+    "Black Holes": true,
+    "Thor's Hammer": false
+  },
+  "q_id": "002"
+},{
+  "_id": {
+    "$oid": "6243a6628f5ca7ab51d57dfb"
+  },
+  "question": "Nuclear sizes are expressed in a unit named",
+  "options": {
+    "fermi": true,
+    "angstrom": false,
+    "newton": false,
+    "tesla": false
+  },
+  "q_id": "003"
+},{
+  "_id": {
+    "$oid": "6243a6ab8f5ca7ab51d57dfc"
+  },
+  "question": "Light year is a unit of",
+  "options": {
+    "time": false,
+    "distance": true,
+    "light": false,
+    "intensity of light": false
+  },
+  "q_id": "004"
+}]

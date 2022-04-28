@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "6244edc44fa565522099357a"
+  },
+  "project_name": "project arc",
+  "project_lists": [
+    {
+      "to_do_list": [
+        {
+          "to do list item 1": null
+        },
+        {
+          "to do list item 2": null
+        },
+        {
+          "to do list item 3": null
+        }
+      ]
+    },
+    {
+      "access_request_list": [
+        {
+          "access list item 1": null
+        },
+        {
+          "access list item 2": null
+        },
+        {
+          "access list item 3": null
+        }
+      ]
+    }
+  ]
+}]

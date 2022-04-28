@@ -1,0 +1,70 @@
+version: "3.1"
+
+stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+# - story: onboarding project story
+#   steps:
+#   - intent: employee_on_boarding_to_project
+#   - action: showing_project_lists_form
+#   - active_loop: showing_project_lists_form
+#   - slot_was_set:
+#     - requested_slot: project_name
+#   - slot_was_set:
+#     - project_name: project1
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_show_project_lists
+
+- story: interactive_debug_host_story_1
+  steps:
+  - intent: debug_help_servers
+  # - action: utter_greet
+  # - intent: request_names
+  - action: debug_host_form
+  - active_loop: debug_host_form
+  - slot_was_set:
+    - requested_slot: debug_host_name
+  - slot_was_set:
+    - debug_host_name: "localhost"
+  - slot_was_set:
+    - requested_slot: debug_host_username
+  - slot_was_set:
+    - debug_host_username: vforvendetta
+  - slot_was_set:
+    - requested_slot: debug_host_password
+  - slot_was_set:
+    - debug_host_password: pforpassword
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_debug_host_username_and_password 
+  - action: debug_proceed_form
+  - active_loop: debug_proceed_form
